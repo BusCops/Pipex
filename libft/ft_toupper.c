@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenzaho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 12:05:47 by abenzaho         ###   ########.fr       */
+/*   Created: 2024/10/23 10:28:28 by abenzaho          #+#    #+#             */
+/*   Updated: 2024/10/23 10:38:23 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_toupper(int c)
 {
-	args_checks(ac);
-	
+	if (c <= 'z' && c >= 'a')
+		c = c - 32;
+	return (c);
 }

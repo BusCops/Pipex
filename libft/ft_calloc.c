@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenzaho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 12:05:47 by abenzaho         ###   ########.fr       */
+/*   Created: 2024/10/23 16:42:47 by abenzaho          #+#    #+#             */
+/*   Updated: 2024/10/23 16:54:12 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_calloc(size_t count, size_t size)
 {
-	args_checks(ac);
-	
+	char	*tmp;
+
+	if (size != 0 && count > SIZE_MAX / size)
+		return (NULL);
+	tmp = (char *)malloc(count * size);
+	if (!tmp)
+		return (NULL);
+	ft_bzero(tmp, count * size);
+	return (tmp);
 }

@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenzaho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 12:05:47 by abenzaho         ###   ########.fr       */
+/*   Created: 2024/10/26 14:46:43 by abenzaho          #+#    #+#             */
+/*   Updated: 2024/10/26 15:00:28 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	args_checks(ac);
-	
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

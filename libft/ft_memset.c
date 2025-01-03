@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenzaho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 12:05:47 by abenzaho         ###   ########.fr       */
+/*   Created: 2024/10/22 10:04:03 by abenzaho          #+#    #+#             */
+/*   Updated: 2024/10/22 11:12:17 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memset(void *str, int c, size_t i)
 {
-	args_checks(ac);
-	
+	unsigned char	*t;
+
+	t = (unsigned char *)str;
+	while (i > 0)
+	{
+		*t = (unsigned char)c;
+		i--;
+		t++;
+	}
+	return (str);
 }
