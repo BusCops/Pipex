@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:55:25 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 11:11:31 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:24:53 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #include <errno.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include "libft/libft.h"
 
-int	args_checks(int ac);
+void	args_checks(int ac);
 
 #endif

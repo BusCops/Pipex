@@ -2,17 +2,19 @@ NAME = pipex
 
 CC = cc
 
-CFLAGS = -Wall -Werorr -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
-SRC = pipex.c pipex_utils.c /libft/libft.a
+SRC = pipex.c pipex_utils.c
 
 RM = rm -rf
 
 OBJ = ${SRC:.c=.o}
 
-${NAME}:
+LIBFT = libft/libft.a
+
+${NAME}: ${SRC}
 	make all -C libft
-	${CC} ${CFLAGS} ${SRC} -o ${NAME}
+	${CC} ${CFLAGS} ${SRC} ${LIBFT} -o ${NAME}
 
 all : ${NAME}
 

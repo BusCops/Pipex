@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/03 12:05:31 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:16:15 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	args_checks(int ac)
 {
     if (ac != 5)
 	{
-		ft_putstr_fd("Error: Wrong argument number\n", 2)
+		ft_putstr_fd("\033[1;91mError: Wrong argument number\n\33[00m", 2);
 		exit(1);
 	}
 }
