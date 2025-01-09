@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/09 17:25:12 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:24:31 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*check_access(char **path_cmd, char *cmd)
 		tmp1 = ft_strjoin(path_cmd[i], "/");
 		tmp2 = ft_strjoin(tmp1, cmd);
 		if (access(tmp2, F_OK | X_OK) == 0)
-			return (free(tmp1), free(tmp2), ft_strdup(path_cmd[i]));
+			return (free(tmp1), tmp2);
 		i++;
 		free(tmp1);
 		free(tmp2);
@@ -68,4 +68,17 @@ char	*check_access(char **path_cmd, char *cmd)
 	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
 	ft_putstr_fd(cmd, 2);
 	exit(1);
+}
+
+char	*get_cmd_dir(char **env, char *cmd)
+{
+	char	**all_cmd_path;
+	char	**cmd_line;
+	char	*cmd_dir;
+	
+	if(!(all_cmd_path = ft_getenv("PATH", env)))
+		exit(1);
+	cmd_line = ft_split(cmd, ' ');
+	cmd_dir = check_access(all_cmd_path, cmd_line[0]);
+	return (free(cmd_line), free(all_cmd_path), cmd_dir);
 }
