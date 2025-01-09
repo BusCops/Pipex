@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/09 17:13:49 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:25:12 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	open_check(int fd)
 	return (fd);
 }
 
-char	**ft_getenv(const char *str,char **env)
+char	**ft_getenv(char *str, char **env)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = ft_strlen(str);
