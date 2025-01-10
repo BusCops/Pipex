@@ -6,27 +6,27 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/10 18:50:54 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:57:00 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child_process(char *file, int *fd, char *cmd, char **env);
+void	child_process(char *file, int *fd, char *cmd, char **env)
 {
 	int	fd1;
 	
 	fd1 = open_file(file, 0);//close this files after
-	dup2(fd1, STDIN_FILENO)
+	dup2(fd1, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	exec_cmd(cmd, env);
 }
 
-void	main_process(char *file, int *fd, char *cmd, char **env);
+void	main_process(char *file, int *fd, char *cmd, char **env)
 {
 	int	fd2;
 	
-	fd2 = open_file(file, 1)//close this files after
+	fd2 = open_file(file, 1);//close this files after
 	dup2(fd2, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	exec_cmd(cmd, env);
@@ -37,7 +37,7 @@ void	exec_cmd(char *cmd, char **env)
 	char	**cmds;
 	int		error_check;
 	
-	cmds = ft_split(cmd, " ");//need to be freed after
+	cmds = ft_split(cmd, ' ');//need to be freed after
 	error_check = execve(get_cmd_dir(env, cmd), cmds, env);
 	if (error_check)
 	{
@@ -64,11 +64,11 @@ int	main(int ac, char **av, char **env)
 		exit(1);
 	}
 	else if (p_id == 0)
-		child_procces(av[1], fd);
+		child_process(av[1], fd, av[2], env);
 	else
 	{
 		wait();
-		main_process(av[4], fd);
+		main_process(av[4], fd, av[3], env);
 	}
 	return (0);
 }
