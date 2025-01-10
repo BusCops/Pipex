@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/09 18:24:31 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:40:36 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,14 @@ void	args_checks(int ac)
 	}
 }
 
-int	open_check(int fd)
+int	open_file(char *file, int mode)
 {
+	int	fd;
+	
+	if (mode == 0)
+		fd = open(file, O_RDONLY);
+	else
+		fd = open(file, O_WRONLY);
 	if (fd < 0)
 	{
 		perror("\033[1;91mError opening file\33[00m");
@@ -76,9 +82,9 @@ char	*get_cmd_dir(char **env, char *cmd)
 	char	**cmd_line;
 	char	*cmd_dir;
 	
-	if(!(all_cmd_path = ft_getenv("PATH", env)))
+	if(!(all_cmd_path = ft_getenv("PATH", env)))//double pointer need to be hundled
 		exit(1);
-	cmd_line = ft_split(cmd, ' ');
+	cmd_line = ft_split(cmd, ' ');//doubl pointer need to be hundled
 	cmd_dir = check_access(all_cmd_path, cmd_line[0]);
-	return (free(cmd_line), free(all_cmd_path), cmd_dir);
+	return (free(cmd_line), free(all_cmd_path), cmd_dir);//only freeing the pointer not the others
 }
