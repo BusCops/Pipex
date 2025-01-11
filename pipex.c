@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/11 13:24:01 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:05:06 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int	main(int ac, char **av, char **env)
 		child_process(av[1], fd, av[2], env);
 	else
 	{
-		main_process(av[4], fd, av[3], env);
 		wait(NULL);
+		main_process(av[4], fd, av[3], env);
 	}
 	return (0);
 }

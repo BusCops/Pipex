@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/11 13:29:14 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:03:20 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	open_file(char *file, int mode)
 	if (mode == 0)
 		fd = open(file, O_RDONLY);
 	else
-		fd = open(file, O_WRONLY);
+		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd < 0)
 	{
 		perror("\033[1;91mError opening file\33[00m");
@@ -73,6 +73,7 @@ char	*check_access(char **path_cmd, char *cmd)
 	}
 	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
 	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }
 
