@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = pipex.c pipex_utils.c
+SRC = pipex.c pipex_utils.c pipex_utils2.c
 
 RM = rm -rf
 

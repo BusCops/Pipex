@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 11:16:41 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 12:06:12 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,23 @@ void	free_array(char **arr)
 int	main(int ac, char **av, char **env)
 {
 	int	p_id;
+	int	p_id2;
 	int	fd[2];
 
 	args_checks(ac);
 	if (pipe(fd) == -1)
-	{
-		perror("\033[1;91mPipe Error\33[00m");
-		exit(1);
-	}
+		pipe_error(1);
 	p_id = fork();
-	if (p_id < 0)
-	{
-		perror("\033[1;91mFork Error\33[00m");
-		exit(1);
-	}
-	else if (p_id == 0)
+	fork_error(p_id);
+	if (p_id == 0)
 		child_process(av[1], fd, av[2], env);
-	main_process(av[4], fd, av[3], env);
+	close(fd[1]);
+	p_id2 = fork();
+	fork_error(p_id2);
+	if (p_id2 == 0)
+		main_process(av[4], fd, av[3], env);
+	close(fd[0]);
+	waitpid(p_id2, NULL, 0);
+	waitpid(p_id, NULL, 0);
 	return (0);
 }

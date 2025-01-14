@@ -6,20 +6,11 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 11:14:38 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:58:53 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	args_checks(int ac)
-{
-	if (ac != 5)
-	{
-		ft_putstr_fd("\033[1;91mError: Wrong argument number\n\33[00m", 2);
-		exit(1);
-	}
-}
 
 int	open_file(char *file, int mode)
 {
