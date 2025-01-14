@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:55:25 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/11 13:27:27 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:15:01 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	args_checks(int ac);
 int		open_file(char *file, int mode);
-char	**ft_getenv(char *str, char **env);
+char	**ft_getenv(char *cmd, char *str, char **env);
 char	*check_access(char **path_cmd, char *cmd);
 char	*get_cmd_dir(char **env, char *cmd);
 void	exec_cmd(char *cmd, char **env);

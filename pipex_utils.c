@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/11 15:03:20 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:14:38 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	open_file(char *file, int mode)
 	return (fd);
 }
 
-char	**ft_getenv(char *str, char **env)
+char	**ft_getenv(char *cmd, char *str, char **env)
 {
 	int	i;
 	int	len;
@@ -50,7 +50,9 @@ char	**ft_getenv(char *str, char **env)
 			return (ft_split(env[i] + len + 1, ':'));
 		i++;
 	}
-	ft_putstr_fd("\033[1;91mNo environment variable found\n\33[00m", 2);
+	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd("\n", 2);
 	return (NULL);
 }
 
@@ -74,7 +76,7 @@ char	*check_access(char **path_cmd, char *cmd)
 	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd("\n", 2);
-	exit(1);
+	return (NULL);
 }
 
 char	*get_cmd_dir(char **env, char *cmd)
@@ -83,10 +85,23 @@ char	*get_cmd_dir(char **env, char *cmd)
 	char	**cmd_line;
 	char	*cmd_dir;
 
-	all_cmd_path = ft_getenv("PATH", env);
+	if (access(cmd, F_OK | X_OK) == 0)
+		return (cmd);
+	all_cmd_path = ft_getenv(cmd, "PATH", env);
 	if (!all_cmd_path)
 		exit(1);
-	cmd_line = ft_split(cmd, ' ');
+	cmd_line = ft_split_custom(cmd);
+	if (!cmd_line)
+	{
+		free_array(all_cmd_path);
+		exit(1);
+	}
 	cmd_dir = check_access(all_cmd_path, cmd_line[0]);
+	if (!cmd_dir)
+	{
+		free_array(cmd_line);
+		free_array(all_cmd_path);
+		exit(1);
+	}
 	return (free_array(cmd_line), free_array(all_cmd_path), cmd_dir);
 }

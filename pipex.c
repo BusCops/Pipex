@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/11 15:05:06 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:16:41 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ void	exec_cmd(char *cmd, char **env)
 	char	**cmds;
 	int		error_check;
 
-	cmds = ft_split(cmd, ' ');
+	cmds = ft_split_custom(cmd);
 	error_check = execve(get_cmd_dir(env, cmd), cmds, env);
 	if (error_check == -1)
 		perror("\033[1;91mError excuting the cmd\33[00m");
 	free_array(cmds);
-	free(cmd);
 	exit(1);
 }
 
@@ -84,10 +83,6 @@ int	main(int ac, char **av, char **env)
 	}
 	else if (p_id == 0)
 		child_process(av[1], fd, av[2], env);
-	else
-	{
-		wait(NULL);
-		main_process(av[4], fd, av[3], env);
-	}
+	main_process(av[4], fd, av[3], env);
 	return (0);
 }
