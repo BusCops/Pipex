@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 12:38:17 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 13:30:31 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	child_process(char *file, int *fd, char *cmd, char **env)
 	exec_cmd(cmd, env);
 }
 
-void	main_process(char *file, int *fd, char *cmd, char **env)
+void	child2_process(char *file, int *fd, char *cmd, char **env)
 {
 	int	fd2;
 
@@ -81,7 +81,7 @@ int	main(int ac, char **av, char **env)
 	p_id2 = fork();
 	fork_error(p_id2);
 	if (p_id2 == 0)
-		main_process(av[4], fd, av[3], env);
+		child2_process(av[4], fd, av[3], env);
 	close(fd[0]);
 	waitpid(p_id2, NULL, 0);
 	waitpid(p_id, NULL, 0);

@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:55:25 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 13:14:44 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 13:30:41 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_getenv(char *cmd, char *str, char **env);
 char	*check_access(char **path_cmd, char *cmd);
 char	*get_cmd_dir(char **env, char *cmd);
 void	exec_cmd(char *cmd, char **env);
-void	main_process(char *file, int *fd, char *cmd, char **env);
+void	child2_process(char *file, int *fd, char *cmd, char **env);
 void	child_process(char *file, int *fd, char *cmd, char **env);
 void	free_array(char **arr);
 void	pipe_error(void);
