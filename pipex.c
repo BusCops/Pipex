@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 12:06:12 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 12:38:17 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int ac, char **av, char **env)
 
 	args_checks(ac);
 	if (pipe(fd) == -1)
-		pipe_error(1);
+		pipe_error();
 	p_id = fork();
 	fork_error(p_id);
 	if (p_id == 0)

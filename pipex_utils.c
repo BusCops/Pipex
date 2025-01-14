@@ -6,11 +6,20 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 11:58:53 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 13:16:42 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_printerror(char *cmd, char *msg)
+{
+	write(2, "Error: ", 7);
+	write(2, msg, ft_strlen(msg));
+	write(2, ": ", 2);
+	write(2, cmd, ft_strlen(cmd));
+	write(2, "\n", 1);
+}
 
 int	open_file(char *file, int mode)
 {
@@ -22,7 +31,7 @@ int	open_file(char *file, int mode)
 		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd < 0)
 	{
-		perror("\033[1;91mError opening file\33[00m");
+		perror("Error opening file");
 		exit(1);
 	}
 	return (fd);
@@ -41,9 +50,7 @@ char	**ft_getenv(char *cmd, char *str, char **env)
 			return (ft_split(env[i] + len + 1, ':'));
 		i++;
 	}
-	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd("\n", 2);
+	ft_printerror(cmd, "Command not found");
 	return (NULL);
 }
 
@@ -64,9 +71,7 @@ char	*check_access(char **path_cmd, char *cmd)
 		free(tmp1);
 		free(tmp2);
 	}
-	ft_putstr_fd("\033[1;91mCommand not found: \33[00m", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd("\n", 2);
+	ft_printerror(cmd, "Command not found");
 	return (NULL);
 }
 

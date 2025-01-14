@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:50:15 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 12:07:05 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/14 13:14:14 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	args_checks(int ac)
 {
 	if (ac != 5)
 	{
-		ft_putstr_fd("\033[1;91mError: Wrong argument number\n\33[00m", 2);
+		ft_putstr_fd("Error: Wrong argument number\n", 2);
 		exit(1);
 	}
 }
@@ -25,13 +25,13 @@ void	fork_error(int p_id)
 {
 	if (p_id < 0)
 	{
-		perror("\033[1;91mFork Error\33[00m");
+		perror("Fork Error");
 		exit(1);
 	}
 }
 
-void	pipe_error(int pipe)
+void	pipe_error(void)
 {
-	perror("\033[1;91mPipe Error\33[00m");
+	perror("Pipe Error");
 	exit(1);
 }

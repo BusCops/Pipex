@@ -77,6 +77,7 @@ pipex/
 ├── Makefile        # Build configuration
 ├── pipex.c         # Main
 ├── pipex_utils.c   # pipex utils
+├── pipex_utils2.c  # pipex utils
 └── pipex.h         # Header file
 ```
 
@@ -96,7 +97,6 @@ The following functions are used in the project:
 ## Known Issues
 If there are any specific limitations or bugs, they can be listed here. For example:
 - Limited to two commands.
-- Does not support command-line argument parsing for commands beyond simple strings.
 
 ---
 
