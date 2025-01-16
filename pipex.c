@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/16 11:14:17 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:29:31 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	exec_cmd(char *cmd, char **env)
 		perror("Error splitting command");
 		exit(1);
 	}
-	cmd_dir = get_cmd_dir(env ,cmds[0]);
+	cmd_dir = get_cmd_dir(env, cmds[0]);
 	if (!cmd_dir)
 	{
 		free_array(cmds);
