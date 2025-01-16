@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:55:25 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 13:30:41 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:53:41 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
-void	args_checks(int ac);
+void	args_checks(int ac, char **av);
 int		open_file(char *file, int mode);
 char	**ft_getenv(char *cmd, char *str, char **env);
 char	*check_access(char **path_cmd, char *cmd);

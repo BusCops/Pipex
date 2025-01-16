@@ -6,17 +6,22 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:50:15 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 13:14:14 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:53:32 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	args_checks(int ac)
+void	args_checks(int ac, char **av)
 {
 	if (ac != 5)
 	{
 		ft_putstr_fd("Error: Wrong argument number\n", 2);
+		exit(1);
+	}
+	if (ft_strlen(av[2]) == 0 || ft_strlen(av[3]) == 0)
+	{
+		ft_putstr_fd("Error: Empty command\n", 2);
 		exit(1);
 	}
 }

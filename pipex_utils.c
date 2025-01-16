@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:46:54 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 13:16:42 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:23:30 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,13 @@ char	*get_cmd_dir(char **env, char *cmd)
 		return (cmd);
 	all_cmd_path = ft_getenv(cmd, "PATH", env);
 	if (!all_cmd_path)
-		exit(1);
+		return(NULL);
 	cmd_line = ft_split_custom(cmd);
 	if (!cmd_line)
 	{
 		free_array(all_cmd_path);
-		exit(1);
+		return(NULL);
 	}
 	cmd_dir = check_access(all_cmd_path, cmd_line[0]);
-	if (!cmd_dir)
-	{
-		free_array(cmd_line);
-		free_array(all_cmd_path);
-		exit(1);
-	}
 	return (free_array(cmd_line), free_array(all_cmd_path), cmd_dir);
 }

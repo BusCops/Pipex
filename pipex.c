@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 10:41:40 by abenzaho          #+#    #+#             */
-/*   Updated: 2025/01/14 13:30:31 by abenzaho         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:14:17 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,22 @@ void	child2_process(char *file, int *fd, char *cmd, char **env)
 void	exec_cmd(char *cmd, char **env)
 {
 	char	**cmds;
-	int		error_check;
+	char	*cmd_dir;
 
 	cmds = ft_split_custom(cmd);
-	error_check = execve(get_cmd_dir(env, cmd), cmds, env);
-	if (error_check == -1)
-		perror("\033[1;91mError excuting the cmd\33[00m");
+	if (!cmds)
+	{
+		perror("Error splitting command");
+		exit(1);
+	}
+	cmd_dir = get_cmd_dir(env ,cmds[0]);
+	if (!cmd_dir)
+	{
+		free_array(cmds);
+		exit(1);
+	}
+	execve(cmd_dir, cmds, env);
+	perror("Error excuting the cmd");
 	free_array(cmds);
 	exit(1);
 }
@@ -70,7 +80,7 @@ int	main(int ac, char **av, char **env)
 	int	p_id2;
 	int	fd[2];
 
-	args_checks(ac);
+	args_checks(ac, av);
 	if (pipe(fd) == -1)
 		pipe_error();
 	p_id = fork();
