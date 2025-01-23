@@ -110,8 +110,3 @@ If there are any specific limitations or bugs, they can be listed here. For exam
 ## Credits
 Developed by **abenzaho** as part of the 42 curriculum.
 
----
-
-## License
-This project is open-source and available under the [MIT License](LICENSE).
-
